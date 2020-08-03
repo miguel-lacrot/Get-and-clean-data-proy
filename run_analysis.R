@@ -4,7 +4,7 @@
 ## degli Studi di Genova. To run this script the dplyr package is required
 ## Created by Miguel Arribas; July 2020; Spain
 
-library(dplyr)
+library(dplyr)  ## open the dplyr library
 
 ## 1.Download unzip and read the required data
 fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -37,7 +37,7 @@ feat_vld <- gsub("-std\\(\\)","Std", feat_vld)
 feat_vld <- gsub("-meanFreq\\(\\)","MeanFreq", feat_vld)
 feat_vld <- gsub("BodyBody","Body", feat_vld)
 
-## 5.Label the data
+## 5.Label the data using descriptive names
 names(data_vld) <- feat_vld
 names(subj) <- "Subject"
 names(actv) <- "Activity"
@@ -45,7 +45,7 @@ names(actv) <- "Activity"
 ## 6.Asign descriptive names to the observed activities
 actv$Activity <- as.character(actilabl[match(actv$Activity,actilabl$V1), 'V2'])
 
-## 7.Merge all the variables: Subjects + Activities + rest of the data
+## 7.Merge all the variables on a single Data Frame: Subjects + Activities + rest of the data
 
 all_data <- bind_cols(subj,actv,data_vld)
 
