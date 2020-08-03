@@ -55,4 +55,4 @@ tidy_data <- all_data %>% group_by(Subject,Activity) %>% summarise_all(mean)
 
 ## 9.Export on a .txt file the ressulting data frame
 
-write.table(tidy_data, "tidy_UCI_HAR.txt")
+write.table(tidy_data, "tidy_UCI_HAR.txt", row.names = FALSE)
